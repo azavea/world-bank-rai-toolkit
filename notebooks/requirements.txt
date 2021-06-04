@@ -1,0 +1,12 @@
+shapely
+rtree
+pandas
+geopandas
+argostranslate
+pyproj
+osmnx
+networkx
+seaborn
+sklearn
+geojson
+
