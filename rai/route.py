@@ -46,17 +46,17 @@ class Router():
             G = download_road_graph(region)
             if save:
                 log.info('Saving graph ...')
-                self.save_graph(self.get_save_path(region))
+                self.save_graph(G, self.get_save_path(region))
         return G
 
     def get_save_path(self, region: str) -> os.PathLike:
         return f'graphs/{region}.graphml'
 
-    def save_graph(self, save_path: Optional[os.PathLike] = None) -> None:
+    def save_graph(self, G, save_path: Optional[os.PathLike] = None) -> None:
         if save_path is None:
             save_path = self.get_save_path(self.region)
         os.makedirs(os.path.dirname(os.path.abspath(save_path)), exist_ok=True)
-        ox.save_graphml(self.G, save_path)
+        ox.save_graphml(G, save_path)
 
     def heuristic(self, node1: Any, node2: Any) -> float:
         p1, p2 = self.node_to_point(node1), self.node_to_point(node2)
