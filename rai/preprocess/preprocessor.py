@@ -8,7 +8,8 @@ from rai.defaults import (PROCESSED_NAME_COL, PROCESSED_LENGTH_COL,
 class Preprocessor(ABC):
     processed_name_col: str = PROCESSED_NAME_COL
     processed_length_col: str = PROCESSED_LENGTH_COL
-    simple_cases_regex: str = r'^[\s\w]+? - [\s\w]+?$'
+    # simple_cases_regex: str = r'^[\s\w]+? - [\s\w]+?$'
+    simple_cases_regex: str = r'^(?:(?! - ).)* - (?:(?! - ).)*$'
 
     def __init__(self, df: pd.DataFrame) -> None:
         self.orig_df = pd.DataFrame(df)
