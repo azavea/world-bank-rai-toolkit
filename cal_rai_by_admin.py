@@ -36,7 +36,7 @@ def add_rai(row):
     rural = np.sum(smash_nodata(rural_img[0,:,:]))
     unserved = np.sum(smash_nodata(unserved_img[0,:,:]))
 
-    row['rai'] = (pop-unserved)/pop
+    row['rai'] = (rural-unserved)/rural
     row['population'] = pop
     row['population_rural'] = rural
     row['population_unserved'] = unserved

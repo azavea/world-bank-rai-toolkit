@@ -80,5 +80,5 @@ with rasterio.Env():
 
 #%% Calculate RAI
 smash_nodata = np.vectorize(lambda v: v if v > 0 else 0)
-gtm_rai = 1 - np.sum(smash_nodata(rai_pop)) / np.sum(smash_nodata(worldpop_img))
+gtm_rai = 1 - np.sum(smash_nodata(rai_pop)) / np.sum(smash_nodata(rural_pop))
 gtm_rai
