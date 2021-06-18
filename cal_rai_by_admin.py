@@ -8,11 +8,13 @@ import numpy as np
 import rasterio
 import rasterio.mask
 import geopandas as gpd
-from matplotlib import pyplot
 
-pfix="py"
-code="pry"
-cname="paraguay"
+# pfix="py"
+# code="pry"
+# cname="paraguay"
+pfix="gt"
+code="GTM"
+cname="guatemala"
 
 #%% Load GADM admin level 1 boundaries
 gadm = gpd.read_file(
@@ -21,8 +23,8 @@ gadm = gpd.read_file(
 
 #%% Load WorldPop
 worldpop = rasterio.open(f"data/inputs/{code}_ppp_2020.tif")
-worldpop_rural = rasterio.open(f"data/{code}/worldpop_rural.tif")
-worldpop_rai = rasterio.open(f"data/{code}/worldpop_rai.tif")
+worldpop_rural = rasterio.open(f"data/{code}/{code}_worldpop_rural.tif")
+worldpop_rai = rasterio.open(f"data/{code}/{code}_worldpop_rai.tif")
 
 #%% Mask function
 def add_rai(row):
@@ -45,5 +47,4 @@ def add_rai(row):
 #%%
 rai_df = gadm.apply(add_rai, axis=1)
 #%%
-rai_df.to_file(f"data/{code}/rai_adm1.json", driver="GeoJSON")
-# %%
+rai_df.to_file(f"data/{code}/{code}_rai_adm1.json", driver="GeoJSON")
