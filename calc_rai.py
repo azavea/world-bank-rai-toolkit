@@ -24,7 +24,7 @@ utm_epsg=32721 #for PRY
 #%% Load GADM
 gadm = gpd.read_file(
     f"data/inputs/gadm36_{code}.gpkg",
-    layer='gadm36_GTM_0')
+    layer=f'gadm36_{code}_0')
 border = gadm['geometry'][0]
 
 #%% Load GRUMP
