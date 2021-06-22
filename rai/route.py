@@ -9,7 +9,7 @@ import osmnx as ox
 import networkx as nx
 from networkx.classes.function import path_weight
 
-from rai.utils import straight_line_distance
+from rai.utils import geographical_distance
 
 ox.config(use_cache=True, log_console=False)
 
@@ -60,7 +60,7 @@ class Router():
 
     def heuristic(self, node1: Any, node2: Any) -> float:
         p1, p2 = self.node_to_point(node1), self.node_to_point(node2)
-        return straight_line_distance(p1, p2)
+        return geographical_distance(p1, p2)
 
     def node_to_point(self, node_key: Any) -> Point:
         node = self.nodes[node_key]

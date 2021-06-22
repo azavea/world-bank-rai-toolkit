@@ -11,7 +11,7 @@ from tqdm import tqdm
 
 from shapely.geometry import Point
 
-from rai.utils import straight_line_distance
+from rai.utils import geographical_distance
 from rai.geocode import Geocoder, GeoPyGeocoder
 from rai.route import Route, Router
 from rai.preprocess import get_country_preprocesor
@@ -79,7 +79,7 @@ class Matcher():
         ]
         if len(pairs) == 0:
             return [], np.array([])
-        straight_dists = [straight_line_distance(p1, p2) for p1, p2 in pairs]
+        straight_dists = [geographical_distance(p1, p2) for p1, p2 in pairs]
         straight_dists = np.array(straight_dists) / 1e3
         diffs = np.abs(straight_dists - target_length)
         filtered_pairs = [p for p, d in zip(pairs, diffs) if d <= tol]

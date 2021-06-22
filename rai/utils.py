@@ -36,9 +36,9 @@ def remove_diacritics(s: Any) -> Any:
     return ''.join(map(rmdiacritics, s))
 
 
-def straight_line_distance(p1: Point,
-                           p2: Point,
-                           epsg: Optional[Union[int, str]] = None) -> float:
+def geographical_distance(p1: Point,
+                          p2: Point,
+                          epsg: Optional[Union[int, str]] = None) -> float:
     line_string = LineString((p1, p2))
     if epsg is not None:
         dist = CRS.from_epsg(epsg).get_geod().geometry_length(line_string)
