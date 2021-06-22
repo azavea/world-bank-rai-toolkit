@@ -108,7 +108,10 @@ def main():
     router = Router(country)
     gcm = GeoPyGeocoder(
         cache_path=cache_path,
-        service_args={'username': 'ahassan'},
+        service_args={
+            'username': 'ahassan',
+            'timeout': 3
+        },
         query_args={'country': country_code})
     with gcm as geocoder:
         matcher = Matcher(geocoder, router)

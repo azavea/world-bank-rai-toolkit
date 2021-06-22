@@ -70,7 +70,8 @@ class GeoPyGeocoder(Geocoder):
         self.geolocator = getattr(geocoders, service)(
             user_agent='route-app', **service_args)
         _geocode = partial(self.geolocator.geocode, **query_args)
-        self.geocode_fn = RateLimiter(_geocode, min_delay_seconds=rate_limit)
+        self.geocode_fn = RateLimiter(
+            _geocode, min_delay_seconds=rate_limit, max_retries=3)
         super().__init__(cache_path=cache_path, max_results=max_results)
 
     def geocode(self, q: str) -> Optional[Tuple[List[str], List[Point]]]:

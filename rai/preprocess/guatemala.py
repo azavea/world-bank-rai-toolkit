@@ -13,12 +13,12 @@ class GuatemalaPreprocessor(Preprocessor):
     def process(self):
         name_col = self.processed_name_col
         self.df.loc[:, name_col] = self.df[name_col].str.replace(
-            'bif.', 'bifurcacion', regex=False)
+            'bif.', 'bifurcacion', case=False, regex=False)
         self.df.loc[:, name_col] = self.df[name_col].str.replace(
-            'bif ', 'bifurcacion ', regex=False)
+            'bif ', 'bifurcacion ', case=False, regex=False)
         self.df.loc[:, name_col] = self.df[name_col].str.replace(
-            'fca.', 'finca', regex=False)
+            'fca.', 'finca', case=False, regex=False)
         self.df.loc[:, name_col] = self.df[name_col].str.replace(
-            'fca ', 'finca ', regex=False)
+            'fca ', 'finca ', case=False, regex=False)
         self.df.loc[:, name_col] = self.df[name_col].str.replace(
-            r' -(\w)', r' \1', regex=True)
+            r' -(\w)', r' \1', case=False, regex=True)
