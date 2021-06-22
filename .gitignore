@@ -137,3 +137,11 @@ graphs/
 out/
 
 *.cache
+
+*.zip
+
+*.qgz
+
+*.png
+
+data/
