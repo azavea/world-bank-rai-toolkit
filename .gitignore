@@ -127,3 +127,21 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+cache/
+
+graphs/
+
+.vscode/
+
+out/
+
+*.cache
+
+*.zip
+
+*.qgz
+
+*.png
+
+data/
