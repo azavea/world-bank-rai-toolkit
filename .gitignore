@@ -139,8 +139,11 @@ out/
 *.cache
 
 *.zip
+!matches/**/*
 
 *.qgz
+
+
 
 *.png
 
